@@ -1,9 +1,9 @@
 package com.mibrh.firechat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText input;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        final String username = intent.getStringExtra(EXTRA_MESSAGE);
+        username = getIntent().getStringExtra(EXTRA_MESSAGE);
 
         // Initialize vars
         display = (TextView) findViewById(R.id.textView);
@@ -39,14 +39,16 @@ public class MainActivity extends AppCompatActivity {
         myRef = database.getReference("main room");
 
         // On Enter
-        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        input.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (actionId == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    myRef.push().setValue("\n" + username + ": " + input.getText().toString());
-                    return true;
-                }
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER)
+                    if (event.getAction() == KeyEvent.ACTION_DOWN){
+                        // Perform action on key press
+                        myRef.push().setValue("\n" + username + ": " + input.getText().toString());
+                        input.setText("");
+                        return true;
+                    }
                 return false;
             }
         });
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                display.setText(dataSnapshot.getValue(String.class));
+                display.append(dataSnapshot.getValue(String.class));
             }
 
             @Override
