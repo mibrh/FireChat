@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String username = intent.getStringExtra(SetUsername.EXTRA_MESSAGE);
+        final String username = intent.getStringExtra(EXTRA_MESSAGE);
 
         // Initialize vars
         display = (TextView) findViewById(R.id.textView);

@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static android.R.id.message;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class SetUsername extends AppCompatActivity {
@@ -19,18 +18,22 @@ public class SetUsername extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_username);
 
+        final Intent intent = new Intent(this, MainActivity.class);
+
         editText = (EditText) findViewById(R.id.editText1);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (actionId == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
-                    if (editText.getText().toString() != null) {
-                        Intent intent = new Intent(this, MainActivity.class);
+                    if (editText.getText().toString().equals("")) {
+                        return false;
+                    }
+                    else {
                         intent.putExtra(EXTRA_MESSAGE, editText.getText().toString());
                         startActivity(intent);
+                        return true;
                     }
-                    return true;
                 }
                 return false;
             }
