@@ -17,14 +17,12 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 import static com.mibrh.firechat.R.id.editText;
 
 public class MainActivity extends AppCompatActivity {
-
     private final static String MAIN_ROOM = "main_room";
 
+    String username;
     TextView display;
     EditText input;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
-    String username;
+    DatabaseReference mainroom;
 
 
     @Override
@@ -38,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize vars
         display = (TextView) findViewById(R.id.textView);
         input = (EditText) findViewById(editText);
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(MAIN_ROOM);
+        mainroom = FirebaseDatabase.getInstance().getReference(MAIN_ROOM);
 
         // On Enter
         input.setOnKeyListener(new View.OnKeyListener() {
@@ -48,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 if (keyCode == KeyEvent.KEYCODE_ENTER)
                     if (event.getAction() == KeyEvent.ACTION_DOWN){
                         // Perform action on key press
-                        //myRef.push().setValue("\n" + username + ": " + input.getText().toString());
                         Message message = new Message(username, input.getText().toString());
-                        //display.append("\n" + message.toString());
-                        myRef.push().setValue(message.serialize());
+                        mainroom.push().setValue(message.serialize());
                         input.setText("");
                         return true;
                     }
@@ -59,32 +54,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myRef.addChildEventListener(new ChildEventListener() {
-            @Override
+        mainroom.addChildEventListener(new ChildEventListener() {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //display.append(dataSnapshot.getValue(String.class));
+                Message message = Message.deserialize(dataSnapshot);
+                display.append(message.toString() + "\n");
             }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            public void onCancelled(DatabaseError databaseError) {}
         });
-
     }
 }

@@ -5,8 +5,10 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.HashMap;
 
 public class Message {
+
     String username;
     String text;
+
 
     public Message(String username, String text){
         this.username = username;
@@ -14,7 +16,10 @@ public class Message {
     }
 
     public static Message deserialize(DataSnapshot snapshot){
-        return null;
+        String username = snapshot.child("username").getValue().toString();
+        String text = snapshot.child("text").getValue().toString();
+
+        return new Message(username, text);
     }
 
     public HashMap<String, String> serialize(){
