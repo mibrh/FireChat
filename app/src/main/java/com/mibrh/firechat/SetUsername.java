@@ -25,9 +25,12 @@ public class SetUsername extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (actionId == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
-                    Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra(EXTRA_MESSAGE, editText.getText().toString());
-                    startActivity(intent);
+                    if (editText.getText().toString() != null) {
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.putExtra(EXTRA_MESSAGE, editText.getText().toString());
+                        startActivity(intent);
+                    }
+                    return true;
                 }
                 return false;
             }
