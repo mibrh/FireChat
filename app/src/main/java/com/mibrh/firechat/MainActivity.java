@@ -18,11 +18,14 @@ import static com.mibrh.firechat.R.id.editText;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String MAIN_ROOM = "main_room";
+
     TextView display;
     EditText input;
     FirebaseDatabase database;
     DatabaseReference myRef;
     String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         display = (TextView) findViewById(R.id.textView);
         input = (EditText) findViewById(editText);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("main room");
+        myRef = database.getReference(MAIN_ROOM);
 
         // On Enter
         input.setOnKeyListener(new View.OnKeyListener() {
@@ -45,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 if (keyCode == KeyEvent.KEYCODE_ENTER)
                     if (event.getAction() == KeyEvent.ACTION_DOWN){
                         // Perform action on key press
-                        myRef.push().setValue("\n" + username + ": " + input.getText().toString());
+                        //myRef.push().setValue("\n" + username + ": " + input.getText().toString());
+                        Message message = new Message(username, input.getText().toString());
+                        //display.append("\n" + message.toString());
+                        myRef.push().setValue(message.serialize());
                         input.setText("");
                         return true;
                     }
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                display.append(dataSnapshot.getValue(String.class));
+                //display.append(dataSnapshot.getValue(String.class));
             }
 
             @Override
