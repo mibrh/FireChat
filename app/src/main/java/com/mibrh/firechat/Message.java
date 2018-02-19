@@ -33,4 +33,8 @@ public class Message {
         return this.username + ": " + this.text;
     }
 
+    public String getUsername() { return this.username; }
+
+    public String getText() { return this.text; }
+
 }
