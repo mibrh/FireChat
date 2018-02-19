@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetUsername">
+        <activity android:name=".SetUsernameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
-            android:parentActivityName=".SetUsername"
+            android:parentActivityName=".SetUsernameActivity"
             android:windowSoftInputMode="stateHidden">
         </activity>
     </application>

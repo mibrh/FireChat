@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.mibrh.firechat.SetUsername">
+    tools:context="com.mibrh.firechat.SetUsernameActivity">
 
     <EditText
         android:id="@+id/username_field"

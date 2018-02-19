@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class SetUsername extends AppCompatActivity {
+public class SetUsernameActivity extends AppCompatActivity {
     EditText editText;
 
 
