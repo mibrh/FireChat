@@ -46,6 +46,8 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:onClick="sendMessage"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:text=">"
             app:layout_constraintHorizontal_bias="0.614"
             app:layout_constraintLeft_toRightOf="@+id/editText"

@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
-            android:parentActivityName=".SetUsername">
-
+            android:parentActivityName=".SetUsername"
+            android:windowSoftInputMode="stateHidden">
         </activity>
     </application>
 
