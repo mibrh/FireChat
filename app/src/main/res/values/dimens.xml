@@ -12,4 +12,7 @@
     <dimen name="bubble_start_padding">30dp</dimen>
     <dimen name="bubble_end_padding">8dp</dimen>
 
+    <dimen name="bubble_top_margin">8dp</dimen>
+    <dimen name="bubble_end_margin">8dp</dimen>
+
 </resources>

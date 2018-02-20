@@ -3,8 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="username">#222222</color>
     <color name="message">#333333</color>
+
     <color name="incoming">#FF8A8A</color>
     <color name="outgoing">#8AB3FF</color>
 </resources>

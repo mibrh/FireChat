@@ -65,6 +65,7 @@
         android:scrollbars="vertical"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp"
+        tools:listitem="@layout/row_message_left"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
