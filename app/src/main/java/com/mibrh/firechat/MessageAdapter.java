@@ -33,8 +33,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layout;
         switch (viewType) {
-            case 0: layout = R.layout.user_message_list_row;    break;
-            default: layout = R.layout.user_message_list_row;   break;
+            case 1: layout = R.layout.row_message_right;    break;
+            default: layout = R.layout.row_message_left;   break;
             // TODO:
             // make new layout if isUser
         }
