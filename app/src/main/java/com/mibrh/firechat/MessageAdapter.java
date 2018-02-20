@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
 
-    private String mainuser;
+    private String main_user;
     private List<Message> messageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -26,7 +26,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     // remove username for original
     public MessageAdapter(List<Message> messageList, String username) {
         this.messageList = messageList;
-        this.mainuser = username;
+        this.main_user = username;
     }
 
     @Override
@@ -35,8 +35,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         switch (viewType) {
             case 1: layout = R.layout.row_message_right;    break;
             default: layout = R.layout.row_message_left;   break;
-            // TODO:
-            // make new layout if isUser
         }
         View itemView = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
 
@@ -58,7 +56,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     @Override
     public int getItemViewType(int position) {
         String user = messageList.get(position).getUsername();
-        if (user.equals(this.mainuser)){
+        if (user.equals(this.main_user)){
             return 1;
         } else {
             return 0;

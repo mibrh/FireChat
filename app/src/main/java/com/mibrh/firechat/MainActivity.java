@@ -24,9 +24,9 @@ import java.util.List;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Message> messageList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private MessageAdapter mAdapter;
+    List<Message> messageList = new ArrayList<>();
+    RecyclerView recyclerView;
+    MessageAdapter mAdapter;
 
     private final static String MAIN_ROOM = "main_room";
 

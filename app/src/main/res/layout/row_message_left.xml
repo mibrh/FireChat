@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="@drawable/shape_incoming_text"
+    android:layout_gravity="start"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
@@ -14,23 +15,25 @@
 
     <TextView
         android:id="@+id/username_display"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textColor="@color/username"
-        android:textSize="16dp"
+        android:paddingStart="8dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="left"
-        android:text="Username"/>
+        android:gravity="start"
+        android:text="@string/default_user"/>
 
     <TextView
         android:id="@+id/text_display"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:textColor="@color/message"
+        android:paddingStart="8dp"
         android:layout_below="@+id/username_display"
-        android:gravity="left"
-        android:text="Message"/>
+        android:gravity="start"
+        android:text="@string/default_message"/>
 
 </RelativeLayout>

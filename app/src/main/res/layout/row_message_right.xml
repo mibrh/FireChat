@@ -18,19 +18,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textColor="@color/username"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="right"
-        android:text="Username"/>
+        android:gravity="end"
+        android:text="@string/default_user"/>
 
     <TextView
         android:id="@+id/text_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
         android:textColor="@color/message"
         android:layout_below="@+id/username_display"
-        android:gravity="right"
-        android:text="Message"/>
+        android:gravity="end"
+        android:text="@string/default_message"/>
 
 </RelativeLayout>

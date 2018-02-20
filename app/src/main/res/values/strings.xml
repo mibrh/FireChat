@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FireChat</string>
+    <string name="default_user">Username</string>
+    <string name="default_message">Message</string>
 </resources>
