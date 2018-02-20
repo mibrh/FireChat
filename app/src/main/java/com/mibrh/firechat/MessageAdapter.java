@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
 
+    private String mainuser;
     private List<Message> messageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -22,14 +23,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         }
     }
 
-
-    public MessageAdapter(List<Message> messageList) {
+    // remove username for original
+    public MessageAdapter(List<Message> messageList, String username) {
         this.messageList = messageList;
+        this.mainuser = username;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_message_list_row, parent, false);
+        int layout;
+        switch (viewType) {
+            case 0: layout = R.layout.user_message_list_row;    break;
+            default: layout = R.layout.user_message_list_row;   break;
+            // TODO:
+            // make new layout if isUser
+        }
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -44,5 +53,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     @Override
     public int getItemCount() {
         return messageList.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        String user = messageList.get(position).getUsername();
+        if (user.equals(this.mainuser)){
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

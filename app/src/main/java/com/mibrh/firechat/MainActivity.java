@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize vars
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_messages_display);
-        mAdapter = new MessageAdapter(messageList);
+        mAdapter = new MessageAdapter(messageList, username);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
